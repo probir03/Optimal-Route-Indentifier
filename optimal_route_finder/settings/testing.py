@@ -33,16 +33,16 @@ BASE_DIR = PROJECT_BASE_DIR
 
 INSTALLED_APPS = [
     'rest_framework',
-    'grids'
+    # 'grids'
 ]
 
 REST_FRAMEWORK = {
     'UNAUTHENTICATED_USER': None
 }
 
-MIDDLEWARE = [
-    'optimal_route_finder.middlewares.handle_exception.HandleExceptionMiddleware',
-]
+# MIDDLEWARE = [
+#     'optimal_route_finder.middlewares.handle_exception.HandleExceptionMiddleware',
+# ]
 
 ROOT_URLCONF = 'optimal_route_finder.urls'
 
@@ -50,15 +50,22 @@ WSGI_APPLICATION = 'optimal_route_finder.wsgi.application'
 
 
 # Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+
 
 DATABASE_SETTINGS = {
     'mongodb': {
-        'NAME': os.environ.get('MONGO_DB_NAME', 'grid'),
-        'USER': os.environ.get('MONGO_DB_USER'),
-        'PASS': os.environ.get('MONGO_DB_PASSWORD'),
-        'HOST': os.environ.get('MONGO_DB_HOST', 'localhost'),
-        'PORT': os.environ.get('MONGO_DB_PORT', '27017'),
+        'NAME': os.environ.get('TEST_MONGO_DB_NAME', 'grid_test'),
+        'USER': os.environ.get('TEST_MONGO_DB_USER'),
+        'PASS': os.environ.get('TEST_MONGO_DB_PASSWORD'),
+        'HOST': os.environ.get('TEST_MONGO_DB_HOST', 'localhost'),
+        'PORT': os.environ.get('TEST_MONGO_DB_PORT', '27017'),
     },
 }
 
