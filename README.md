@@ -7,6 +7,11 @@
  2. Find the optimal distance between two given node based on the distance and speed factor.
 ```
 
+#### Solution
+> Make a weighted graph with all the given edges and assinged the weight as distance between nodes and speed.
+  To find the optimal route between two points/nodes, we need to find the all posssible path by the formula \
+  (Σ distance/speed) and then we need to find the smallest value path as an Optimal path.
+
 #### Setup
 **RUN:**
 ```bash
@@ -45,5 +50,5 @@ $ .setup/setup.sh
 
 #### Endpoints
 
-> use postman file```bash Optimal Route Identifier.postman_collection.json``` for endpoint and schema info.
+> use postman file ``` Optimal-Route-Identifier.postman_collection.json``` for endpoint and schema info.
 
