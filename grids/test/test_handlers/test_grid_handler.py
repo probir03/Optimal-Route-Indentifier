@@ -34,3 +34,40 @@ class TestGridHandle(BaseTest):
         handler_obj = GridHandler()
         res, count, offset = handler_obj.get_all_grid(0, 10)
         self.assertEqual(count, 0)
+    
+    def test_get_grid(self):
+        ''' Test get_grid method'''
+        handler_obj = GridHandler()
+        err, res = handler_obj.store_grid(get_dummy_valid_grid('grid by id'))
+        err, res = handler_obj.get_grid(res.get('id'))
+        self.assertEqual(err, False)
+    
+
+    def test_update_grid(self):
+        ''' Test update_grid method'''
+        handler_obj = GridHandler()
+        err, res = handler_obj.store_grid(get_dummy_valid_grid('update grid by id'))
+        res['name'] = 'update grid'
+        err, res = handler_obj.update_grid(res.pop('id'), res)
+        self.assertEqual(err, False)
+    
+    def test_delete_grid(self):
+        ''' Test delete_grid method'''
+        handler_obj = GridHandler()
+        err, res = handler_obj.store_grid(get_dummy_valid_grid('delete grid by id'))
+        err, res = handler_obj.delete_grid(res.get('id'))
+        self.assertEqual(err, False)
+    
+    def test_optimal_route(self):
+        ''' Test update_grid method'''
+        handler_obj = GridHandler()
+        err, res = handler_obj.store_grid(get_dummy_valid_grid('optimal grid by id'))
+        err, res = handler_obj.find_optimal_route(res.pop('id'), 'a', 'b')
+        self.assertEqual(err, False)
+    
+    def test_no_optimal_route(self):
+        ''' Test update_grid method'''
+        handler_obj = GridHandler()
+        err, res = handler_obj.store_grid(get_dummy_valid_grid('no optimal grid by id'))
+        err, res = handler_obj.find_optimal_route(res.pop('id'), 'a', 'x')
+        self.assertEqual(err, True)

@@ -1,8 +1,8 @@
-def get_dummy_valid_grid():
+def get_dummy_valid_grid(name='grid1'):
     '''Return dummy Grid data'''
 
     return {
-        "name": "grid1",
+        "name": name,
         "nodes": ["a", "b", "c", "d", "e", "f", "g", "h"],
         "edges": [
             {
@@ -62,11 +62,11 @@ def get_dummy_valid_grid():
         ]
     }
 
-def get_dummy_invalid_grid():
+def get_dummy_invalid_grid(name='grid2'):
     '''Return dummy Grid data'''
 
     return {
-        "name": "grid2",
+        "name": name,
         "nodes": ["a", "b", "c", "d", "e", "f", "g", "h"],
         "edges": [
             {

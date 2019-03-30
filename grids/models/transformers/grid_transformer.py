@@ -10,12 +10,12 @@ class GridTransformer():
             for item in data:
                 item['id'] = item.pop('_id')
                 item.pop('is_deleted')
-                item['updatedAt'] = item.pop('updated_at')
-                item['createdAt'] = item.pop('created_at')
+                item['updatedAt'] = item.pop('updated_at', None)
+                item['createdAt'] = item.pop('created_at', None)
         
         else:
             data['id'] = data.pop('_id')
             data.pop('is_deleted')
-            data['updatedAt'] = data.pop('updated_at')
-            data['createdAt'] = data.pop('created_at')
+            data['updatedAt'] = data.pop('updated_at', None)
+            data['createdAt'] = data.pop('created_at', None)
         return data

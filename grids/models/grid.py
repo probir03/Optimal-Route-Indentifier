@@ -56,4 +56,5 @@ class Grid(MongoModel):
     class Meta:
         '''Meta class for defining meta info of model'''
         collection_name = "Grids"
+        final = True
 

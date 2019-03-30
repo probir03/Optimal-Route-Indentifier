@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "2f823184-2879-47bf-9e3f-b770e41927bd",
+		"name": "Optimal Route Identifier",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all grids",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/grids",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"grids"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a grid",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"grid3\",\n\t\"nodes\": [\"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\"],\n\t\"edges\": [\n\n\t\t{\n\t\t\t\"start\": \"a\",\n\t\t\t\"end\": \"c\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 1\n\t\t},\n\t\t{\n\t\t\t\"start\": \"d\",\n\t\t\t\"end\": \"b\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 1\n\t\t},\n\t\t{\n\t\t\t\"start\": \"g\",\n\t\t\t\"end\": \"h\",\n\t\t\t\"distance\": 5,\n\t\t\t\"speed\": 1\n\t\t},\n\t\t{\n\t\t\t\"start\": \"h\",\n\t\t\t\"end\": \"f\",\n\t\t\t\"distance\": 2,\n\t\t\t\"speed\": 3\n\t\t},\n\t\t{\n\t\t\t\"start\": \"h\",\n\t\t\t\"end\": \"d\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 5\n\t\t},\n\t\t{\n\t\t\t\"start\": \"b\",\n\t\t\t\"end\": \"f\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 1\n\t\t},\n\t\t{\n\t\t\t\"start\": \"c\",\n\t\t\t\"end\": \"d\",\n\t\t\t\"distance\": 2,\n\t\t\t\"speed\": 1\n\t\t},\n\t\t{\n\t\t\t\"start\": \"c\",\n\t\t\t\"end\": \"e\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 10\n\t\t},\n\t\t{\n\t\t\t\"start\": \"e\",\n\t\t\t\"end\": \"d\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 10\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/grids",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"grids"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grid  by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/grids/df9bd60b-4a1b-4057-892a-5143d68daa99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"grids",
+						"df9bd60b-4a1b-4057-892a-5143d68daa99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a grid",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"grid3\",\n\t\"nodes\": [\"a\", \"b\", \"c\", \"d\", \"e\", \"f\", \"g\", \"h\"],\n\t\"edges\": [\n\n\t\t{\n\t\t\t\"start\": \"a\",\n\t\t\t\"end\": \"c\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 1\n\t\t},\n\t\t{\n\t\t\t\"start\": \"d\",\n\t\t\t\"end\": \"b\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 1\n\t\t},\n\t\t{\n\t\t\t\"start\": \"g\",\n\t\t\t\"end\": \"h\",\n\t\t\t\"distance\": 5,\n\t\t\t\"speed\": 1\n\t\t},\n\t\t{\n\t\t\t\"start\": \"h\",\n\t\t\t\"end\": \"f\",\n\t\t\t\"distance\": 2,\n\t\t\t\"speed\": 3\n\t\t},\n\t\t{\n\t\t\t\"start\": \"h\",\n\t\t\t\"end\": \"d\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 5\n\t\t},\n\t\t{\n\t\t\t\"start\": \"b\",\n\t\t\t\"end\": \"f\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 1\n\t\t},\n\t\t{\n\t\t\t\"start\": \"c\",\n\t\t\t\"end\": \"d\",\n\t\t\t\"distance\": 2,\n\t\t\t\"speed\": 1\n\t\t},\n\t\t{\n\t\t\t\"start\": \"c\",\n\t\t\t\"end\": \"e\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 10\n\t\t},\n\t\t{\n\t\t\t\"start\": \"e\",\n\t\t\t\"end\": \"d\",\n\t\t\t\"distance\": 3,\n\t\t\t\"speed\": 10\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/grids/df9bd60b-4a1b-4057-892a-5143d68daa99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"grids",
+						"df9bd60b-4a1b-4057-892a-5143d68daa99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a grid by id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/grids/df9bd60b-4a1b-4057-892a-5143d68daa99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"grids",
+						"df9bd60b-4a1b-4057-892a-5143d68daa99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Optimal route between two points/node",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/grids/df9bd60b-4a1b-4057-892a-5143d68daa99/optimal-route?start=a&end=h",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"grids",
+						"df9bd60b-4a1b-4057-892a-5143d68daa99",
+						"optimal-route"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "a"
+						},
+						{
+							"key": "end",
+							"value": "h"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

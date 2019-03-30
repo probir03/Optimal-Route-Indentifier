@@ -73,3 +73,93 @@ class GridManager(DefaultManager):
         if transform:
             return getattr(self.transformer, transformer_name)(grids), count, new_offset
         return grids, count, new_offset
+    
+    def grid_by_id(self, grid_id, transform=False, transformer_name='transform'):
+        '''Grid of a given id
+
+        Args:
+            grid_id: string(UUID)
+            transform: boolean (option for tranforming data or not)
+            transformer_name: str (transformer method name)
+        
+        Return:
+            A dictionary of a grid
+        '''
+        query = {
+            '_id': grid_id
+        }
+        filters = [
+            {
+                'is_deleted': {
+                    '$ne': True
+                }
+            }
+        ]
+        grid = self.get_one(filters=filters, queries=query)
+        
+        if grid and transform:
+            return getattr(self.transformer, transformer_name)(grid)
+        return grid
+    
+    def update_grid_by_id(self, grid_id, grid, transform=False, transformer_name='transform'):
+        '''Method to update grid in db by grid id
+
+        Args:
+            grid_id: string(UUID)
+            grid: dictionary
+            transform: boolean (option for tranforming data or not)
+            transformer_name: str (transformer method name)
+        
+        Return:
+            A dictionary of a grid
+        '''
+        current_epoch = helpers.current_epoch()
+        grid['updated_at'] = current_epoch
+
+        check_query = {
+            '_id': {
+                '$ne' : grid_id
+            },
+            'is_deleted': False,
+            'name': grid.get('name')
+        }
+
+        if self.get_one(queries=check_query):
+            return True, 'Grid name already exists'
+
+        update_query = {
+            '_id': grid_id,
+            'is_deleted': False
+        }
+
+        data = {
+            '$set': grid
+        }
+
+        grid = self.update_one(data, queries=update_query, return_document=True, upsert=True)
+        
+        if grid and transform:
+            return False, getattr(self.transformer, transformer_name)(grid)
+        return False, grid
+    
+    def delete_grid_by_id(self, grid_id):
+        '''Method to delete a grid by id
+
+        Args:
+            grid_id: string(uuid)
+
+        Return:
+            either string or dict
+        '''
+        delete_data = {
+            '$set' : {
+                'is_deleted':  True
+            }
+        }
+        query = {
+            '_id': grid_id
+        }
+        res = self.update_one(delete_data, queries=query)
+        if res:
+            return False, res
+        return True, "Cannot delete measure !"
