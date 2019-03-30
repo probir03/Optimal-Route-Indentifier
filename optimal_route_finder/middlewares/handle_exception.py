@@ -8,7 +8,6 @@ from django.http.response import (
     HttpResponseNotAllowed
 )
 
-# from commons.utils.loggers import error_logger
 from commons.utils.http_error import (
     HttpError,
     InternalServerError,
@@ -55,14 +54,6 @@ class HandleExceptionMiddleware:
             return e.response
 
         except Exception as e:
-
-            # log unhandled exception
-            # error = traceback.format_exc()
-            # log = '{uuid} :: \n{traceback}\n\n---------------------------------------------------------'.format(
-            #     uuid=request.request_id,
-            #     traceback=error
-            # )
-            # error_logger.error(log)
             traceback.print_exc()
 
             # send default error response hiding sensitive exception details
