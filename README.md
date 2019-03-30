@@ -38,6 +38,11 @@ $ .setup/setup.sh
     $ supervisorctl -c supervisord.conf stop all
 ```
 
+#### Restart Application
+```bash
+    $ ./restart.sh
+```
+
 #### Endpoints
 
 > use postman file```bash Optimal Route Identifier.postman_collection.json``` for endpoint and schema info.
